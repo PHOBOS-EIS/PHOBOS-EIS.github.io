@@ -1,28 +1,132 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PHOBOS</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
+      margin: 0;
+      min-height: 100vh;
       background: #0a0a0a;
-      color: #00ffcc;
+      color: #eaeaea;
       font-family: Arial, sans-serif;
-      text-align: center;
-      margin-top: 120px;
+      position: relative;
     }
-    h1 {
-      font-size: 48px;
+
+    /* Logo in upper right */
+    .logo {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      font-size: 28px;
+      font-weight: bold;
       letter-spacing: 4px;
+      color: #00ffcc;
     }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 120px 24px 40px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 12px;
+      color: #00ffcc;
+    }
+
     p {
-      color: #aaa;
+      color: #b0b0b0;
       font-size: 18px;
+      margin-bottom: 40px;
+    }
+
+    .upload-box {
+      border: 2px dashed #00ffcc;
+      border-radius: 14px;
+      padding: 40px 24px;
+      background: #111;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .upload-box h2 {
+      margin-top: 0;
+      color: #ffffff;
+      font-size: 24px;
+    }
+
+    .upload-box label {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 12px 20px;
+      background: #00ffcc;
+      color: #000;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .upload-box input[type="file"] {
+      display: none;
+    }
+
+    #fileName {
+      margin-top: 18px;
+      color: #cccccc;
+      font-size: 15px;
+    }
+
+    @media (max-width: 600px) {
+      .logo {
+        top: 16px;
+        right: 20px;
+        font-size: 22px;
+      }
+
+      h1 {
+        font-size: 32px;
+      }
+
+      .container {
+        padding-top: 100px;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>PHOBOS</h1>
-  <p>Engineering • Research • Instrumentation</p>
+  <div class="logo">PHOBOS</div>
+
+  <div class="container">
+    <h1>Upload CSV File</h1>
+    <p>Import your `.csv` file for analysis or visualization.</p>
+
+    <div class="upload-box">
+      <h2>Select a CSV file</h2>
+      <label for="csvFile">Choose File</label>
+      <input type="file" id="csvFile" accept=".csv" />
+      <div id="fileName">No file selected</div>
+    </div>
+  </div>
+
+  <script>
+    const csvInput = document.getElementById("csvFile");
+    const fileName = document.getElementById("fileName");
+
+    csvInput.addEventListener("change", function () {
+      if (this.files.length > 0) {
+        fileName.textContent = "Selected file: " + this.files[0].name;
+      } else {
+        fileName.textContent = "No file selected";
+      }
+    });
+  </script>
 </body>
 </html>
