@@ -17,7 +17,7 @@ PHOBOS is a personal website dedicated to showcasing projects, research, and dev
 
 ## 🚀 Live Website
 
-👉 https://phobos.github.io/
+👉 https://phobos-eis.github.io/
 
 ---
 
